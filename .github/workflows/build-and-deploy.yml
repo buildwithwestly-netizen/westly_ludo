@@ -1,8 +1,6 @@
       - name: Unzip project
         run: |
           unzip westly_ludo.zip -d temp_extract/
-          # Find the folder containing pubspec.yaml and copy all files to root
-          PROJECT_DIR=$(find temp_extract -name "pubspec.yaml" -exec dirname {} \; | head -1)
-          cp -r "$PROJECT_DIR"/* .
+          mv temp_extract/westly_ludo/* . 2>/dev/null || mv temp_extract/*/* . 2>/dev/null || mv temp_extract/* .
           rm -rf temp_extract westly_ludo.zip
           
